@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PID=$(cat ./socat_mavproxy.pid)
+PID=$(cat /home/odroid/Cyclone_scripts/socat_mavproxy.pid)
 
 #su odroid -c "screen -S MavProxy -X quit"
 echo "Killing screen..."
@@ -12,5 +12,5 @@ echo "Going to kill socat with PID: $PID"
 kill $PID
 echo "Done."
 
-rm ./socat_mavproxy.pid
+rm /home/odroid/Cyclone_scripts/socat_mavproxy.pid
 
