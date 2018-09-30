@@ -7,7 +7,7 @@ if [ -e /dev/ttyACM0 ]; then
         #touch /var/run/socat_mavproxy.pid
         echo "$!" > "./socat_mavproxy.pid"
 else
-	echo "GPS not connected"
+	echo "Start.sh: GPS not connected"
 fi
 screen -S MavProxy -d -m -s /bin/bash mavproxy.py --master=udpout:192.168.1.119:14550 --out=udpin:0.0.0.0:14550 --out=udp:127.0.0.1:14000 --load-module=DGPS --cmd="set shownoise false"
 #screen -S MavProxy -d -m -s /bin/bash mavproxy.py --master=/dev/ttyUSB0,115200 --out=udpin:0.0.0.0:14550 --load-module=DGPS --cmd="set shownoise false"
