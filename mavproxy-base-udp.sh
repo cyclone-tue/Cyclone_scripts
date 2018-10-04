@@ -1,8 +1,11 @@
 #!/bin/bash
 FILE=/dev/ttyACM0
-if [ -e /dev/ttyACM0 ]; then
-	stty -F /dev/ttyACM0 115200 raw -echo -echoe -echok -iexten -echoctl -echoke
-	socat UDP-DATAGRAM:127.0.0.1:13320 file:/dev/ttyACM0 &
+
+sleep 30
+
+if [ -e $FILE ]; then
+	stty -F $FILE 115200 raw -echo -echoe -echok -iexten -echoctl -echoke
+	socat UDP-DATAGRAM:127.0.0.1:13320 file:$FILE &
 	echo $!
         #touch /var/run/socat_mavproxy.pid
         echo "$!" > "./socat_mavproxy.pid"
